@@ -17,8 +17,8 @@ export const Sidebar = () => {
         if (user) {
             // Configurar avatar
             setAvatar({
-                name: user.name || 'John Doe',
-                username: user.username || 'johndoe',
+                name: user.nombre || 'John Doe',
+                username: user.correo || 'johndoe',
                 src: user.avatar || './placeholder.svg'
             });
 
