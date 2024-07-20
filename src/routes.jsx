@@ -11,6 +11,22 @@ const routes = [
             { path: 'home', element: <Home /> },
             { index: true, element: <Home /> }
         ],
+    },
+    {
+        path: '/principal/admin',
+        element: <Sidebar />,
+        children: [
+            { path: 'home', element: <Home /> },
+            { index: true, element: <Home /> }
+        ],
+    },
+    {
+        path: '/principal/preceptor',
+        element: <Sidebar />,
+        children: [
+            { path: 'home', element: <Home /> },
+            { index: true, element: <Home /> }
+        ],
     }
 ]
 

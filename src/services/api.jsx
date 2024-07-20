@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create ({
-    baseURL: 'http://localhost:3000/supportMe/v1',
+    baseURL: 'https://backendsupportme.vercel.app/supportMe/v1',
     timeout: 5000
 })
 
@@ -10,14 +10,14 @@ apiClient.interceptors.request.use(
         const userDetails = localStorage.getItem('user');
         if (userDetails) {
             const token = JSON.parse(userDetails).token;
-            config.headers.Autorization = `Bearer ${token}`;
+            config.headers.Authorization = `Bearer ${token}`;
         }
         return config;
     },
-    (error) => {
-        return Promise.reject(error);
+    (e) => {
+        return Promise.reject(e);
     }
-)
+);
 
 //login
 export const login = async (data) => {
