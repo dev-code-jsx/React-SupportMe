@@ -64,7 +64,7 @@ const SidebarLayout = ({ links, avatarName, avatarUsername }) => {
                     </Avatar>
                     <div className="flex-1 truncate">
                         <div className="font-medium">{avatarName}</div>
-                        <div className="text-muted-foreground">@{avatarUsername}</div>
+                        <div className="text-muted-foreground">{avatarUsername}</div>
                     </div>
                     <button
                         onClick={() => console.log('Logout')}

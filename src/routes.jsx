@@ -2,9 +2,11 @@ import { Auth } from './pages/auth/Auth'
 import { Sidebar } from './pages/sidebar/Sidebar';
 import { Home } from './components/Home'
 import { RegisterPreceptor } from './pages/registerPreceptor/RegisterPreceptor';
+import { RegisterPaciente } from './pages/registerPaciente/RegisterPaciente';
 
 const routes = [
     { path: '/', element: <Auth /> },
+    { path: '/register', element: <RegisterPaciente />},
     {
         path: '/principal',
         element: <Sidebar />,
