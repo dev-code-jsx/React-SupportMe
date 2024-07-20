@@ -26,7 +26,7 @@ export const RegisterPreceptor = () => {
                             <Input id="password" type="password" required />
                         </div>
                         <Button type="submit" className="w-full">
-                            Iniciar Sesión
+                            Registrar preceptor
                         </Button>
                     </div>
                 </div>
