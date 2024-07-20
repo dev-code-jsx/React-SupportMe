@@ -33,7 +33,6 @@ export const registerPaciente = async (data) => {
     try {
         return await apiClient.post('/user/addUser', data);
     } catch (e) {
-        console.log(data)
         return { error: true, e }
     }
 }
