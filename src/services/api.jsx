@@ -114,7 +114,9 @@ export const addRecurso = async (data) => {
     try {
         return await apiClient.post('/recurso/addRecurso', data);
     } catch (e) {
+        console.log(data)
         return { error: true, e }
+        
     }
 }
 

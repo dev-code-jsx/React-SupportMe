@@ -1,5 +1,5 @@
-
-export const ResourceCard = ({ titulo, imagenRecurso, tipo, linkHref }) => {
+import { Link } from "react-router-dom";
+export const ResourceCard = ({ titulo, imagenRecurso, tipo, contenido, _id }) => {
     //hacer que cuando toque el boton de go me suba el id a la url y luego ese id lo busque en la base de datos y muestre el recurso
 
     return (
@@ -15,8 +15,9 @@ export const ResourceCard = ({ titulo, imagenRecurso, tipo, linkHref }) => {
                 <h3 className="text-xl font-semibold">{titulo}</h3>
                 <div className="flex items-center justify-between">
                     <span className="text-muted-foreground">{tipo}</span>
+                    <p className="text-muted-foreground">{contenido}</p>
                     <Link
-                        to={`/resources/${linkHref}`}
+                        to={`/principal/admin/resources/${_id}`}
                         className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                     >
                         Go
