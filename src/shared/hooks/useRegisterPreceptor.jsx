@@ -18,9 +18,11 @@ export const useRegisterPreceptor = () => {
       setIsLoading(false);
 
       if (response.error) {
-        return toast.error(
-          response.e?.response?.data || "Ocurrió un error al registrar el usuario"
-        );
+        if (response.error.response && response.error.response.status === 400 && response.error.response.data.includes('email already registered')) {
+          return toast.error("El correo ya está registrado");
+        }
+
+        return toast.error(response.error.response?.data || "El correo ya está registrado o hay datos nulos");
       }
 
       toast.success("Registro exitoso");
