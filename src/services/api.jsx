@@ -143,6 +143,7 @@ export const editRecurso = async (id, data) => {
     try {
         return await apiClient.put(`/recurso/update/${id}`, data);
     } catch (e) {
+        console.log(data)
         return { error: true, e }
     }
 }

@@ -11,7 +11,7 @@ export const useAddResource = () => {
             return response.data
         } catch (e) {
             setIsLoading(false)
-            setError(e.response ? e.response.data.message : "Transfer failed");   
+            setError(e.response ? e.response.data.message : "Resource addition failed");   
             return {error: true, message: e.message}
         }
     }

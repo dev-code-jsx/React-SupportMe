@@ -4,6 +4,7 @@ import { Home } from './components/Home'
 import { RegisterPreceptor } from './pages/registerPreceptor/RegisterPreceptor';
 import { RegisterPaciente } from './pages/registerPaciente/RegisterPaciente';
 import { AdminRecursosPage } from './pages/AdminRecursos/AdminRecursosPage';
+import { FormResourceAdminEdit } from './pages/resourcesAdmin/ResourceEdit';
 import { BlogPage } from './pages/BlogPage.jsx/BlogPage';
 const routes = [
     { path: '/', element: <Auth /> },
@@ -26,7 +27,8 @@ const routes = [
             { index: true, element: <RegisterPreceptor /> },
             { path: 'adminRecursos', element: <AdminRecursosPage/>},
             { index: true, element: <AdminRecursosPage/>},
-            { path: 'resources/:id', element: <BlogPage />} 
+            { path: 'resources/:id', element: <BlogPage />},
+            { path: 'resourcesEdit/:id', element: <FormResourceAdminEdit/>}
         ],
     },
     {

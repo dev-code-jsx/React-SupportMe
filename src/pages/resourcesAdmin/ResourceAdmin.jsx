@@ -1,5 +1,6 @@
 import { ResourceCard } from "../../components/ResourceCard";
 import { getRecursosA } from "../../shared/hooks/getRecursosA";
+import { Link } from "react-router-dom";
 export const ResourceGridA = () => {
     //cargar el hook que traiga los recursos y pasar esa informacion al componente
     //aqui obtener el id y mandarlo a otra pagina para editar y el editar que abra un modal y se elimine
@@ -18,12 +19,12 @@ export const ResourceGridA = () => {
                           _id={recurso._id}
                     />
                     <div className="absolute top-2 right-2 flex space-x-2">
-                        <button 
+                        <Link
+                            to={`/principal/admin/resourcesEdit/${recurso._id}`}
                             className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-700"
-                            onClick={() => handleEdit(resource._id)}
                         >
                             Editar
-                        </button>
+                        </Link>
                         <button 
                             className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-700"
                             onClick={() => handleDelete(resource._id)}
