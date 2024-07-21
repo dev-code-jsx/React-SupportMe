@@ -23,9 +23,11 @@ export const Sidebar = () => {
             });
 
             // Configurar enlaces según el rol del usuario
-            let userLinks = [{ href: '/principal/home', icon: FaHome, label: 'Home' }];
+            let userLinks = [{ href: '/principal/home', icon: FaHome, label: 'Home' },];
 
             switch (user.role) {
+                case 'PACIENTE_ROLE':
+                    break;
                 case 'ADMIN_ROLE':
                     userLinks.push({ href: '/principal/admin/registerPreceptor', icon: FaRegistered, label: 'Register Preceptor' });
                     break;
