@@ -1,7 +1,7 @@
 
-export const SelectForm = ({ children, id }) => (
+export const SelectForm = ({ children, id, value, onChange }) => (
     <div className="relative mt-1">
-        <select id={id} className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+        <select id={id} value={value} onChange={onChange} className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
             {children}
         </select>
     </div>

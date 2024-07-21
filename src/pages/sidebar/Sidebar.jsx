@@ -1,4 +1,5 @@
 import { FaHome, FaRegistered } from 'react-icons/fa';
+import { VscCodeOss } from "react-icons/vsc";
 import { SidebarLayout } from '../../components/SheetsComponents';
 import React, { useEffect, useState } from 'react';
 
@@ -30,6 +31,7 @@ export const Sidebar = () => {
                     break;
                 case 'ADMIN_ROLE':
                     userLinks.push({ href: '/principal/admin/registerPreceptor', icon: FaRegistered, label: 'Register Preceptor' });
+                    userLinks.push({ href: '/principal/admin/adminRecursos', icon: VscCodeOss, label: 'CRUD Recursos'})
                     break;
                 case 'PRECEPTOR_ROLE':
                     break;
