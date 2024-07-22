@@ -17,7 +17,7 @@ import { ButtonForm } from '../../components/ButtonForm';
 import { useGetRecursoById } from '../../shared/hooks/useGetRecursoById';
 import { useUpdateResource } from '../../shared/hooks/useUpdateResource';
 import toast from 'react-hot-toast';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useEditResourceForm } from '../../shared/hooks/useEditResourceForm';
 export const FormResourceAdminEdit = () => {
   const navigate = useNavigate()
@@ -25,6 +25,18 @@ export const FormResourceAdminEdit = () => {
   const { recurso, loading, error } = useGetRecursoById(id);
   const { formState, setFormState } = useEditResourceForm();
   const { actualizarRecurso, loadingResource } = useUpdateResource();
+  const [authorized, setAuthorized] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('user');
+
+    if (token.role === 'ADMIN_ROLE') {
+      setAuthorized(true);
+    } else {
+      localStorage.removeItem('user');
+      window.location.href = '/unauthorized';
+    }
+  }, []);
 
   useEffect(() => {
     if (recurso) {
@@ -97,6 +109,9 @@ export const FormResourceAdminEdit = () => {
     navigate("/principal/admin/adminRecursos")
   };
 
+  if (!authorized) {
+    return <div>Cargando...</div>;
+  }
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="w-full px-4 md:max-w-2xl md:mx-auto">

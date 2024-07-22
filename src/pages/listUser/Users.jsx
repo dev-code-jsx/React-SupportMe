@@ -1,7 +1,20 @@
 import { useGetUser } from "../../shared/hooks";
+import { useEffect, useState } from "react";
 
 export const Users = () => {
     const { users, isLoading } = useGetUser();
+    const [authorized, setAuthorized] = useState(false);
+
+    useEffect(() => {
+        const token = localStorage.getItem('user');
+
+        if (token.role === 'ADMIN_ROLE') {
+            setAuthorized(true);
+        } else {
+            localStorage.removeItem('user');
+            window.location.href = '/unauthorized';
+        }
+    }, []);
 
     if (isLoading) {
         return <p>Loading...</p>;
@@ -11,6 +24,9 @@ export const Users = () => {
         return <p>No users found</p>;
     }
 
+    if (!authorized) {
+        return <div>Cargando...</div>;
+    }
     return (
         <div className="container mx-auto p-4">
             <h2 className="text-2xl font-bold mb-4">List of Users</h2>

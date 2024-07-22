@@ -3,16 +3,28 @@ import { getRecursosA } from '../../shared/hooks/getRecursosA';
 import { useDeleteResource } from '../../shared/hooks/useDeleteResource';
 import { DeleteConfirmationModal } from '../modals/DeleteConfirmationModal';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 export const ResourceGridA = () => {
-  //cargar el hook que traiga los recursos y pasar esa informacion al componente
-  //aqui obtener el id y mandarlo a otra pagina para editar y el editar que abra un modal y se elimine
   const navigate = useNavigate()
   const { recursos, loading, error } = getRecursosA();
   const { handleDelete } = useDeleteResource();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedResourceId, setSelectedResourceId] = useState(null);
+  const [authorized, setAuthorized] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('user');
+
+    if (token.role === 'ADMIN_ROLE') {
+      setAuthorized(true);
+    } else {
+      localStorage.removeItem('user');
+      window.location.href = '/unauthorized';
+    }
+  }, []);
+
   const openModal = (resourceId) => {
     setSelectedResourceId(resourceId);
     setIsModalOpen(true);
@@ -26,10 +38,14 @@ export const ResourceGridA = () => {
   const confirmDelete = async () => {
     await handleDelete(selectedResourceId);
     closeModal();
-    setTimeout(()=>{
-        window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
     }, 2000)
   };
+
+  if (!authorized) {
+    return <div>Cargando...</div>;
+  }
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-6xl mx-auto">
       {recursos.map((recurso, index) => (
