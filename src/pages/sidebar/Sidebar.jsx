@@ -1,4 +1,4 @@
-import { FaAirFreshener, FaBook, FaHome, FaMagento, FaRegistered } from 'react-icons/fa';
+import { FaAirFreshener, FaBook, FaHome, FaMagento, FaRegistered, FaUser } from 'react-icons/fa';
 import { SidebarLayout } from '../../components/SheetsComponents';
 import React, { useEffect, useState } from 'react';
 import { Fa42Group, Fa5, FaAccusoft, FaSmoking } from 'react-icons/fa6';
@@ -35,6 +35,7 @@ export const Sidebar = () => {
                 case 'ADMIN_ROLE':
                     userLinks.push({ href: '/principal/admin/registerPreceptor', icon: FaRegistered, label: 'Register Preceptor' });
                     userLinks.push({ href: '/principal/admin/adminRecursos', icon: VscCodeOss, label: 'CRUD Recursos'})
+                    userLinks.push({ href: '/principal/admin/users', icon: FaUser, label: 'Users'})
                     break;
                 case 'PRECEPTOR_ROLE':
                     userLinks.push({ href: '/principal/preceptor/allDiarios', icon: VscCodeOss, label: 'Diarios asignados'})

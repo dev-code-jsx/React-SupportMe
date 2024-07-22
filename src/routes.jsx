@@ -10,6 +10,7 @@ import { BlogPage } from './pages/BlogPage.jsx/BlogPage';
 import {MyDiary} from "./pages/myDiary/MyDiary"
 import { ResourceGrid } from './pages/resources/ResourceGrid';
 import { BlogPagePatient } from './pages/BlogPage.jsx/BlogPagePatient';
+import { Users } from './pages/listUser/Users';
 const routes = [
     { path: '/', element: <Auth /> },
     { path: '/register', element: <RegisterPaciente />},
@@ -37,7 +38,9 @@ const routes = [
             { path: 'adminRecursos', element: <AdminRecursosPage/>},
             { index: true, element: <AdminRecursosPage/>},
             { path: 'resources/:id', element: <BlogPage />},
-            { path: 'resourcesEdit/:id', element: <FormResourceAdminEdit/>}
+            { path: 'resourcesEdit/:id', element: <FormResourceAdminEdit/>},
+            { path: 'users', element: <Users/>},
+            { index: true, element: <Users/>}
         ],
     },
     {

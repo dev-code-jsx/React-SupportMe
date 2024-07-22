@@ -1,0 +1,41 @@
+import { useGetUser } from "../../shared/hooks";
+
+export const Users = () => {
+    const { users, isLoading } = useGetUser();
+
+    if (isLoading) {
+        return <p>Loading...</p>;
+    }
+
+    if (!users || users.length === 0) {
+        return <p>No users found</p>;
+    }
+
+    return (
+        <div className="container mx-auto p-4">
+            <h2 className="text-2xl font-bold mb-4">List of Users</h2>
+            <div className="overflow-x-auto">
+                <table className="min-w-full bg-white border border-gray-200">
+                    <thead className="bg-gray-100">
+                        <tr>
+                            <th className="px-4 py-2 border-b border-gray-200 text-left">Nombre</th>
+                            <th className="px-4 py-2 border-b border-gray-200 text-left">Correo</th>
+                            <th className="px-4 py-2 border-b border-gray-200 text-left">Role</th>
+                            <th className="px-4 py-2 border-b border-gray-200 text-left">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users.map(user => (
+                            <tr key={user._id} className="hover:bg-gray-100">
+                                <td className="px-4 py-2 border-b border-gray-200">{user.nombre}</td>
+                                <td className="px-4 py-2 border-b border-gray-200">{user.correo}</td>
+                                <td className="px-4 py-2 border-b border-gray-200">{user.role}</td>
+                                <td className="px-4 py-2 border-b border-gray-200">{user.estado ? 'Activo' : 'Desactivo'}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
+}
