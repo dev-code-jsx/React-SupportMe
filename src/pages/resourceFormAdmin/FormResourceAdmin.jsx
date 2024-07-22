@@ -131,10 +131,10 @@ export const FormResourceAdmin = () => {
               className="mt-4 md:mt-0"
               onClick={() =>
                 setFormState({
-                  imagen: '',
-                  titulo: '',
-                  tipo: '',
-                  contenido: '',
+                  imagen: { value: ''},
+                  titulo: { value: ''},
+                  tipo: { value: ''},
+                  contenido: { value: ''}
                 })
               }
             >
