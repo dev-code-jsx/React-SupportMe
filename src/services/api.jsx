@@ -207,11 +207,3 @@ export const deleteDiario = async (id) => {
         return { error: true, e }
     }
 }
-
-export const getMyDiary = async () => {
-    try {
-        return await apiClient.get('/');
-    } catch (e) {
-        return { error: true, e }
-    }
-}
