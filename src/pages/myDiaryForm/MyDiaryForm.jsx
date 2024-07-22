@@ -16,6 +16,7 @@ export const MyDiaryForm = () => {
             await handleAddEntry(formState.contenido.value);
             toast.success('Entry added successfully');
             resetForm();
+            window.location.reload();
         } catch (error) {
             toast.error('Failed to add entry');
         }

@@ -35,7 +35,7 @@ export const Home = () => {
           <div className="container max-w-5xl mx-auto">
             <h2 className="text-2xl font-bold mb-4 text-center">Nuestro Logotipo</h2>
             <div className="flex justify-center mb-8">
-              <img src="/placeholder.svg" alt="Logo" width={96} height={96} className="w-24 h-24" />
+              <img src="/src/assets/img/logo.jpeg" alt="Logo" width={96} height={96} className="w-24 h-24" />
             </div>
             <p className="text-muted-foreground text-center">
               Nuestro logotipo representa los valores de nuestra organización: la unión, la diversidad y el compromiso
