@@ -1,0 +1,27 @@
+import { Link } from "react-router-dom"
+import { FiAlertTriangle } from "react-icons/fi";
+
+export const Notfound = () => {
+    return (
+        <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-md text-center">
+                <FiAlertTriangle className="mx-auto h-12 w-12 text-primary" />
+                <h1 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                    Oops, la página no se encuentra
+                </h1>
+                <p className="mt-4 text-muted-foreground">
+                    Lo sentimos, pero no pudimos encontrar la página que estabas buscando. Por favor, intenta de nuevo más tarde o
+                    comunícate con el soporte si el problema persiste.
+                </p>
+                <div className="mt-6">
+                    <Link
+                        to="/"
+                        className="bg-[#1E40AF] inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground text-white shadow-sm transition-colors hover:bg-[#1D4ED8] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                    >
+                        Regresar
+                    </Link>
+                </div>
+            </div>
+        </div>
+    )
+}

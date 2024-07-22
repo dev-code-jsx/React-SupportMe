@@ -3,6 +3,8 @@ import { SidebarLayout } from '../../components/SheetsComponents';
 import React, { useEffect, useState } from 'react';
 import { Fa42Group, Fa5, FaAccusoft, FaSmoking } from 'react-icons/fa6';
 import { VscCodeOss } from "react-icons/vsc";
+import { MdManageAccounts } from "react-icons/md";
+
 export const Sidebar = () => {
     const [links, setLinks] = useState([]);
     const [avatar, setAvatar] = useState({
@@ -30,16 +32,18 @@ export const Sidebar = () => {
             switch (user.role) {
                 case 'PACIENTE_ROLE':
                     userLinks.push({ href: '/principal/myDiary', icon: FaBook, label: 'My Diary'})
-                    userLinks.push({ href: "/principal/resourcesGrid", icon: VscCodeOss, label: "Resources"})
+                    userLinks.push({ href: "/principal/resourcesGrid", icon: VscCodeOss, label: "Resources"}),
+                    userLinks.push({ href: "/principal/myUserDetails", icon: MdManageAccounts, label: "My Details"})
                     break;
                 case 'ADMIN_ROLE':
                     userLinks.push({ href: '/principal/admin/registerPreceptor', icon: FaRegistered, label: 'Register Preceptor' });
                     userLinks.push({ href: '/principal/admin/adminRecursos', icon: VscCodeOss, label: 'CRUD Recursos'})
-                    userLinks.push({ href: '/principal/admin/users', icon: FaUser, label: 'Users'})
+                    userLinks.push({ href: '/principal/admin/users', icon: FaUser, label: 'Users'}),
+                    userLinks.push({ href: '/principal/admin/myUserDet', icon: MdManageAccounts, label: 'My Details'})
                     break;
                 case 'PRECEPTOR_ROLE':
                     userLinks.push({ href: '/principal/preceptor/allDiarios', icon: VscCodeOss, label: 'Diarios asignados'})
-                    
+                    userLinks.push({ href: "/principal/preceptor/myUserDetails", icon: MdManageAccounts, label: "My Details"})
                     break;
                 default:
                     break;

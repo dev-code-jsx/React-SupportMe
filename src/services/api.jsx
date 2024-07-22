@@ -93,7 +93,7 @@ export const getDiarioByPreceptor = async () => {
 //buscarUser
 export const searchUser = async (id) => {
     try {
-        return await apiClient.post(`/user/${id}`);
+        return await apiClient.get(`/user/${id}`);
     } catch (e) {
         return { error: true, e }
     }

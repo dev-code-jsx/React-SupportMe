@@ -11,8 +11,14 @@ import {MyDiary} from "./pages/myDiary/MyDiary"
 import { ResourceGrid } from './pages/resources/ResourceGrid';
 import { BlogPagePatient } from './pages/BlogPage.jsx/BlogPagePatient';
 import { Users } from './pages/listUser/Users';
+import { Notfound } from './components/Notfound';
+import { Unauthorized } from './components/Unauthorized';
+import { UserDetails } from './pages/myUserDetails/UserDetails';
+
 const routes = [
     { path: '/', element: <Auth /> },
+    { path: '*', element: <Notfound /> },
+    { path: '/unauthorized', element: <Unauthorized /> },
     { path: '/register', element: <RegisterPaciente />},
     {
         path: '/principal',
@@ -21,10 +27,9 @@ const routes = [
             { path: 'home', element: <Home /> },
             { index: true, element: <Home /> },
             { path: 'myDiary', element: <MyDiary /> },
-            { index: true, element: <MyDiary /> },
             { path: "resourcesGrid", element: <ResourceGrid/>},
-            { index: true, element: <ResourceGrid/> },
             { path: 'resources/:id', element: <BlogPagePatient />},
+            { path: 'myUserDetails', element: <UserDetails />},
         ],
     },
     {
@@ -32,15 +37,12 @@ const routes = [
         element: <Sidebar />,
         children: [
             { path: 'home', element: <Home /> },
-            { index: true, element: <Home /> },
             { path: 'registerPreceptor', element: <RegisterPreceptor /> },
-            { index: true, element: <RegisterPreceptor /> },
             { path: 'adminRecursos', element: <AdminRecursosPage/>},
-            { index: true, element: <AdminRecursosPage/>},
             { path: 'resources/:id', element: <BlogPage />},
             { path: 'resourcesEdit/:id', element: <FormResourceAdminEdit/>},
             { path: 'users', element: <Users/>},
-            { index: true, element: <Users/>}
+            { path: 'myUserDetails', element: <UserDetails />},
         ],
     },
     {
@@ -50,7 +52,7 @@ const routes = [
             { path: 'home', element: <Home /> },
             { index: true, element: <Home /> },
             { path: 'allDiarios', element: <DiariesOfMyPatients /> },
-            { index: true, element: <DiariesOfMyPatients /> },
+            { path: 'myUserDetails', element: <UserDetails />},
         ],
     },
     
