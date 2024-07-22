@@ -12,7 +12,7 @@ export const useDeleteResource = () => {
       if (response.error) {
         toast.error('Error al eliminar el recurso');
       } else {
-        toast.error('Recurso eliminado correctamente');
+        toast.success('Recurso eliminado correctamente');
       }
     } catch (error) {
       console.error('Error deleting resource:', error);
