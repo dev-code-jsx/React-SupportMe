@@ -2,6 +2,7 @@ import { CardForm } from '../../components/CardForm';
 import { CardContentForm } from '../../components/CardContentForm';
 import { CardFooterForm } from '../../components/CardFooterForm';
 import { LabelForm } from '../../components/LabelForm';
+import { useState } from 'react';
 import { InputForm } from '../../components/InputForm';
 import {
   SelectForm,
@@ -20,6 +21,7 @@ export const FormResourceAdmin = () => {
   //aqui obtener los datos del formulario, hacer la peticion al backend y guardar en el selectcontentform van las opciones del backend
   const { formState, setFormState } = useResourceForm();
   const { addResource, isLoading, error } = useAddResource();
+  const [isFormValid, setIsFormValid] = useState(false);
   useEffect(() => {
     if (!isLoading) {
       setFormState({
@@ -30,6 +32,18 @@ export const FormResourceAdmin = () => {
       });
     }
   }, [isLoading, error, setFormState]);
+  useEffect(() => {
+    const validateForm = () => {
+      return (
+        formState.imagen.value.trim() !== '',
+        formState.titulo.value.trim() !== '',
+        formState.tipo.value.trim() !== '' ,
+        formState.contenido.value.trim() !== ''
+      );
+    };
+
+    setIsFormValid(validateForm());
+  }, [formState]);
   const handleSelectChange = (e) => {
     const { id, value } = e.target;
     setFormState((prevState) => ({
@@ -70,8 +84,13 @@ export const FormResourceAdmin = () => {
         }));
       });
       toast.error('Register failed');
-    } else {
+    } else if(!isFormValid){
+      toast.error('Tiene que llenar todos los campos!');
+    }else{
       toast.success('Register succesful');
+      setTimeout(()=>{
+        window.location.reload();
+    }, 2000)
     }
   };
   return (
@@ -88,6 +107,7 @@ export const FormResourceAdmin = () => {
                   placeholder="Ingresa la URL de la imagen"
                   value={formState.imagen.value}
                   onChange={handleInputValueChange}
+                  required
                 />
               </div>
               <div className="space-y-3">
@@ -97,6 +117,7 @@ export const FormResourceAdmin = () => {
                   placeholder="Ingresa el titulo"
                   value={formState.titulo.value}
                   onChange={handleInputValueChange}
+                  required
                 />
               </div>
             </div>
@@ -122,6 +143,7 @@ export const FormResourceAdmin = () => {
                 value={formState.contenido.value}
                 onChange={handleInputValueChange}
                 className="min-h-[150px]"
+                required
               />
             </div>
           </CardContentForm>
@@ -143,7 +165,7 @@ export const FormResourceAdmin = () => {
             <ButtonForm
               className="mt-4 md:mt-0"
               onClick={handleSubmit}
-              disabled={isLoading}
+              disabled={isLoading || !isFormValid}
             >
               {isLoading ? 'Guardando...' : 'Guardar'}
             </ButtonForm>
