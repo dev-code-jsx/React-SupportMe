@@ -4,13 +4,23 @@ import { Input } from '../../components/Input';
 import { Label } from '../../components/Label';
 import logo from '../../assets/img/logo.jpeg';
 import { useRegisterUser } from '../../shared/hooks/useRegisterUser';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const RegisterPaciente = () => {
-  // Aquí obtener los datos del usuario a registrar y mandarlos al backend, no olvidar mandar el rol
   const { register, isLoading } = useRegisterUser();
   const navigate = useNavigate();
+  const [authorized, setAuthorized] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('user');
+    if (token) {
+      setAuthorized(true);
+    } else {
+      localStorage.removeItem('user');
+      window.location.href = '/unauthorized';
+    }
+  }, []);
 
   const [formState, setFormState] = useState({
     nombre: {
@@ -59,6 +69,9 @@ export const RegisterPaciente = () => {
     !formState.correo.value ||
     !formState.password.value;
 
+  if (!authorized) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="flex items-center justify-center min-h-screen bg-white-800">
       <Card className="mx-auto w-full sm:w-11/12 md:w-3/4 lg:w-1/2 xl:w-1/3 h-auto flex items-center">

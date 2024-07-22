@@ -1,10 +1,26 @@
 import { ButtonForm } from "../../components/ButtonForm";
 import { TextareaForm } from "../../components/TextareaForm";
+import { useState, useEffect } from "react";
 
 export const PatientDiary = () => {
-    //obtener las entradas del diario y guardarlas en un array en la db
+    const [authorized, setAuthorized] = useState(false);
+
+    useEffect(() => {
+        const token = localStorage.getItem('user');
+        if (token) {
+            setAuthorized(true);
+        } else {
+            localStorage.removeItem('user');
+            window.location.href = '/unauthorized';
+        }
+    }, []);
 
     const today = new Date().toLocaleDateString();
+    
+    if (!authorized) {
+        return <div>Loading...</div>;
+    }
+    
     return (
         <div className="w-full">
             <div className="max-w-6xl mx-auto p-6 space-y-6">

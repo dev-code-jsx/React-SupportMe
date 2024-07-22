@@ -4,11 +4,23 @@ import { Link } from 'react-router-dom';
 import { useAddMyDiary } from '../../shared/hooks/useAddMyDiary';
 import { useMyDiaryForm } from '../../shared/hooks/useMyDiaryForm';
 import toast from 'react-hot-toast';
+import { useEffect, useState } from 'react';
 
 export const MyDiaryForm = () => {
     const { fecha } = useParams();
     const { isLoading, error, handleAddEntry } = useAddMyDiary();
     const { formState, handleInputValueChange, resetForm } = useMyDiaryForm();
+    const [authorized, setAuthorized] = useState(false);
+
+    useEffect(() => {
+        const token = localStorage.getItem('user');
+        if (token) {
+            setAuthorized(true);
+        } else {
+            localStorage.removeItem('user');
+            window.location.href = '/unauthorized';
+        }
+    }, []);
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
@@ -22,6 +34,9 @@ export const MyDiaryForm = () => {
         }
     };
 
+    if (!authorized) {
+        return <div>Loading...</div>;
+    }
     return (
         <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
             <div className="flex items-center mb-6">

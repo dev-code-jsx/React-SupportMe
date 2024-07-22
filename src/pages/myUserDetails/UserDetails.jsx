@@ -9,8 +9,6 @@ export const UserDetails = () => {
     const userLogged = useUserFromLocalStorage();
     const { user, loading, error } = useGetUserById(userLogged?.id);
 
-    console.log(user, "usuario");
-
     if (loading) {
         return <div>Cargando...</div>;
     }

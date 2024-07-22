@@ -2,11 +2,26 @@ import React from "react";
 import { useDiariosByPreceptor } from "../../shared/hooks/useDiariosByPreceptor";
 import { CardContentDiary } from "../../components/CardDiaryContent";
 import { CardDiaryPreceptor } from "../../components/CardDiaryPreceptor";
+import { useEffect, useState } from "react";
+
 export const DiariesOfMyPatients = () => {
   const { diarios, loading, error } = useDiariosByPreceptor();
+  const [authorized, setAuthorized] = useState(false);
 
+  useEffect(() => {
+    const token = localStorage.getItem('user');
+    if (token) {
+      setAuthorized(true);
+    } else {
+      localStorage.removeItem('user');
+      window.location.href = '/unauthorized';
+    }
+  }, []);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
+  if (!authorized) {
+    return <div>Cargando...</div>;
+  }
 
   return (
     <div className="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">

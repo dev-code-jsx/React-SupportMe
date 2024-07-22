@@ -37,6 +37,7 @@ const routes = [
         element: <Sidebar />,
         children: [
             { path: 'home', element: <Home /> },
+            { index: true, element: <Home /> },
             { path: 'registerPreceptor', element: <RegisterPreceptor /> },
             { path: 'adminRecursos', element: <AdminRecursosPage/>},
             { path: 'resources/:id', element: <BlogPage />},

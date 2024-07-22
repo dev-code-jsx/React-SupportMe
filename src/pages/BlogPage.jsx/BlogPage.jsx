@@ -10,8 +10,7 @@ export const BlogPage = () => {
 
     useEffect(() => {
         const token = localStorage.getItem('user');
-
-        if (token.role === 'ADMIN_ROLE') {
+        if (token) {
             setAuthorized(true);
         } else {
             localStorage.removeItem('user');

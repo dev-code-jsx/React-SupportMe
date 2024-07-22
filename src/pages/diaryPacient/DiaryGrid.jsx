@@ -1,8 +1,20 @@
 import { CardDiary } from "../../components/CardDiary";
 import { useGetDiary } from "../../shared/hooks/useGetDiary";
+import { useEffect, useState } from "react";
 
 export const DiaryGrid = () => {
     const { diarios, loading, error } = useGetDiary();
+    const [authorized, setAuthorized] = useState(false);
+
+    useEffect(() => {
+        const token = localStorage.getItem('user');
+        if (token) {
+            setAuthorized(true);
+        } else {
+            localStorage.removeItem('user');
+            window.location.href = '/unauthorized';
+        }
+    }, []);
 
     if (loading) {
         return <div>Loading...</div>;

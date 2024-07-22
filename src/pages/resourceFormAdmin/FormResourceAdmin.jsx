@@ -2,7 +2,6 @@ import { CardForm } from '../../components/CardForm';
 import { CardContentForm } from '../../components/CardContentForm';
 import { CardFooterForm } from '../../components/CardFooterForm';
 import { LabelForm } from '../../components/LabelForm';
-import { useState } from 'react';
 import { InputForm } from '../../components/InputForm';
 import {
   SelectForm,
@@ -13,15 +12,26 @@ import {
 } from '../../components/SelectOptions';
 import { TextareaForm } from '../../components/TextareaForm';
 import { ButtonForm } from '../../components/ButtonForm';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAddResource } from '../../shared/hooks/useAddResource';
 import { useResourceForm } from '../../shared/hooks/useResourceForm';
 import toast from 'react-hot-toast';
+
 export const FormResourceAdmin = () => {
-  //aqui obtener los datos del formulario, hacer la peticion al backend y guardar en el selectcontentform van las opciones del backend
   const { formState, setFormState } = useResourceForm();
   const { addResource, isLoading, error } = useAddResource();
   const [isFormValid, setIsFormValid] = useState(false);
+  const [authorized, setAuthorized] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('user');
+    if (token) {
+      setAuthorized(true);
+    } else {
+      localStorage.removeItem('user');
+      window.location.href = '/unauthorized';
+    }
+  }, []);
   useEffect(() => {
     if (!isLoading) {
       setFormState({
@@ -93,6 +103,11 @@ export const FormResourceAdmin = () => {
     }, 2000)
     }
   };
+
+  if (!authorized) {
+    return <div>Loading...</div>;
+  }
+  
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="w-full px-4 md:max-w-2xl md:mx-auto">

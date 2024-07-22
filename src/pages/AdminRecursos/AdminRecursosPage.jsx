@@ -2,13 +2,12 @@ import { ResourceGridA } from "../resourcesAdmin/ResourceAdmin";
 import { FormResourceAdmin } from "../resourceFormAdmin/FormResourceAdmin";
 import { useEffect, useState } from "react";
 
-export const AdminRecursosPage = () =>{
+export const AdminRecursosPage = () => {
     const [authorized, setAuthorized] = useState(false);
 
     useEffect(() => {
         const token = localStorage.getItem('user');
-
-        if (token.role === 'ADMIN_ROLE') {
+        if (token) {
             setAuthorized(true);
         } else {
             localStorage.removeItem('user');
@@ -20,10 +19,10 @@ export const AdminRecursosPage = () =>{
         return <div>Cargando...</div>;
     }
 
-    return(
+    return (
         <div>
-            <FormResourceAdmin/>
-            <ResourceGridA/>
+            <FormResourceAdmin />
+            <ResourceGridA />
         </div>
     )
 }
