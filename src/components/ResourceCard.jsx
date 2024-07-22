@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 export const ResourceCard = ({ titulo, imagenRecurso, tipo, contenido, _id }) => {
     //hacer que cuando toque el boton de go me suba el id a la url y luego ese id lo busque en la base de datos y muestre el recurso
-
+    const shortenText = (text, maxLength) => {
+        if (text.length <= maxLength) return text;
+        return text.substring(0, maxLength) + '...';
+    };
     return (
         <div className="rounded-lg overflow-hidden shadow-lg">
             <img
