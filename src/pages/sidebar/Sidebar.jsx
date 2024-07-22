@@ -34,6 +34,7 @@ export const Sidebar = () => {
                     userLinks.push({ href: '/principal/admin/adminRecursos', icon: VscCodeOss, label: 'CRUD Recursos'})
                     break;
                 case 'PRECEPTOR_ROLE':
+                    userLinks.push({ href: '/principal/preceptor/allDiarios', icon: VscCodeOss, label: 'Diarios asignados'})
                     break;
                 default:
                     break;

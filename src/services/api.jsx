@@ -82,6 +82,14 @@ export const searchPaciente = async (id) => {
     }
 }
 
+export const getDiarioByPreceptor = async () => {
+    try {
+        return await apiClient.get('/diarios/preceptor/diarios');
+    } catch (e) {
+        return { error: true, e };
+    }
+}
+
 //buscarUser
 export const searchUser = async (id) => {
     try {
@@ -170,6 +178,7 @@ export const getDiarioByPaciente = async (id) => {
     try {
         return await apiClient.get(`/diarios/paciente/${id}`);
     } catch (e) {
+        console.log(id)
         return { error: true, e }
     }
 }
@@ -191,6 +200,7 @@ export const getDiarioByPacienteByDate = async (id, fecha) => {
         return { error: true, e }
     }
 }
+
 
 //editarDiario
 export const editDiario = async (id, data) => {

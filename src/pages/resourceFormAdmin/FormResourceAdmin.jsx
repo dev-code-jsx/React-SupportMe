@@ -107,10 +107,8 @@ export const FormResourceAdmin = () => {
                   <SelectValueForm placeholder="Selecciona el tipo" />
                 </SelectTriggerForm>
                 <SelectContentForm >
-                  <SelectItemForm value="article">Artículo</SelectItemForm>
-                  <SelectItemForm value="video">Video</SelectItemForm>
+                  <SelectItemForm value="juego">Juego</SelectItemForm>
                   <SelectItemForm value="lectura">Libro</SelectItemForm>
-                  <SelectItemForm value="other">Otro</SelectItemForm>
                 </SelectContentForm>
               </SelectForm>
             </div>

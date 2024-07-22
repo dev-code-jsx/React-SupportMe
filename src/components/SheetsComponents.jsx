@@ -4,7 +4,7 @@ import { Avatar } from './Avatar';
 import { AvatarFallback } from './AvatarFallback';
 import { HiMiniArrowRightEndOnRectangle } from "react-icons/hi2";
 import { HiListBullet } from "react-icons/hi2";
-import logo from '../assets/img/logo.jpeg'
+import logo from '../assets/img/logo.jpeg';
 
 const Sheet = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -17,6 +17,11 @@ const Sheet = ({ children }) => {
         </div>
     );
 };
+
+const handleLogout = (navigate) => {
+    localStorage.removeItem("user");
+    navigate("/");
+}; 
 
 const SheetTrigger = ({ asChild, isOpen, setIsOpen, children }) => {
     const trigger = React.cloneElement(children, {
@@ -67,7 +72,7 @@ const SidebarLayout = ({ links, avatarName, avatarUsername }) => {
                         <div className="text-muted-foreground">{avatarUsername}</div>
                     </div>
                     <button
-                        onClick={() => console.log('Logout')}
+                        onClick={() => handleLogout(navigate)}
                         className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-foreground"
                     >
                         <HiMiniArrowRightEndOnRectangle className="h-5 w-5" />
@@ -106,7 +111,10 @@ const SidebarLayout = ({ links, avatarName, avatarUsername }) => {
                                     {links.map((link, index) => (
                                         <button
                                             key={index}
-                                            onClick={() => navigate(link.href)}
+                                            onClick={() => {
+                                                navigate(link.href);
+                                                setIsOpen(false);
+                                            }}
                                             className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-foreground"
                                         >
                                             {link.icon && <link.icon className="h-5 w-5" />}
@@ -123,7 +131,7 @@ const SidebarLayout = ({ links, avatarName, avatarUsername }) => {
                                         <div className="text-muted-foreground">@{avatarUsername}</div>
                                     </div>
                                     <button
-                                        onClick={() => console.log('Logout')}
+                                        onClick={() => handleLogout(navigate)}
                                         className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-foreground"
                                     >
                                         <HiMiniArrowRightEndOnRectangle className="h-5 w-5" />
@@ -135,8 +143,7 @@ const SidebarLayout = ({ links, avatarName, avatarUsername }) => {
                     </Sheet>
                 </header>
                 <main className="flex-1 p-4 sm:p-6 overflow-y-auto">
-                    {/* Aquí se pintan los componentes según la ruta que definamos, recuerden agregar bien la ruta */}
-                    <Outlet /> {/* Aquí se van a renderizar los componentes según la ruta que pongamos */}
+                    <Outlet />
                 </main>
             </div>
         </div>
