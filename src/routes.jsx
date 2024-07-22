@@ -5,9 +5,8 @@ import { RegisterPreceptor } from './pages/registerPreceptor/RegisterPreceptor';
 import { RegisterPaciente } from './pages/registerPaciente/RegisterPaciente';
 import { DiariesOfMyPatients } from './pages/diariesOfMyPatients/DiariesOfMyPatients';
 import { AdminRecursosPage } from './pages/AdminRecursos/AdminRecursosPage';
-import {BlogPage} from './pages/BlogPage.jsx/BlogPage'
-import { FormResourceAdmin } from './pages/resourceFormAdmin/FormResourceAdmin';
-
+import { FormResourceAdminEdit } from './pages/resourcesAdmin/ResourceEdit';
+import { BlogPage } from './pages/BlogPage.jsx/BlogPage';
 const routes = [
     { path: '/', element: <Auth /> },
     { path: '/register', element: <RegisterPaciente />},
@@ -30,7 +29,7 @@ const routes = [
             { path: 'adminRecursos', element: <AdminRecursosPage/>},
             { index: true, element: <AdminRecursosPage/>},
             { path: 'resources/:id', element: <BlogPage />},
-            { path: 'resourcesEdit/:id', element: <c/>}
+            { path: 'resourcesEdit/:id', element: <FormResourceAdminEdit/>}
         ],
     },
     {
