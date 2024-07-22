@@ -3,7 +3,7 @@ import { Sidebar } from './pages/sidebar/Sidebar';
 import { Home } from './components/Home'
 import { RegisterPreceptor } from './pages/registerPreceptor/RegisterPreceptor';
 import { RegisterPaciente } from './pages/registerPaciente/RegisterPaciente';
-import { MyDiary } from './pages/myDiary/MyDiary';
+import { MyDiary } from './pages/MyDiary/MyDiary';
 
 const routes = [
     { path: '/', element: <Auth /> },

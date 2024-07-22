@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { VscArrowLeft } from 'react-icons/vsc';
 import { Link } from 'react-router-dom';
-import { useAddMyDiary } from '../../shared/hooks/useAddMyDiary'; // Ajusta la ruta según tu estructura de carpetas
-import { useMyDiaryForm } from '../../shared/hooks/useMyDiaryForm'; // Ajusta la ruta según tu estructura de carpetas
+import { useAddMyDiary } from '../../shared/hooks/useAddMyDiary';
+import { useMyDiaryForm } from '../../shared/hooks/useMyDiaryForm';
 import toast from 'react-hot-toast';
 
 export const MyDiaryForm = () => {
@@ -54,10 +54,10 @@ export const MyDiaryForm = () => {
                         className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                         disabled={isLoading}
                     >
-                        {isLoading ? 'Guardando...' : 'Guardar Entrada'}
+                        {isLoading ? 'Guardando...' : 'Guardar'}
                     </button>
                 </form>
-                {error && <div className="text-red-500">Error: {error}</div>}
+                {error && <div className="text-red-500">Error, empty content, add content</div>}
             </div>
         </div>
     );
