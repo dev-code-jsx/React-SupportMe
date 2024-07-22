@@ -8,7 +8,11 @@ export const AdminRecursosPage = () => {
     useEffect(() => {
         const token = localStorage.getItem('user');
         if (token) {
-            setAuthorized(true);
+            const user = JSON.parse(token);
+
+            if (user.role === 'ADMIN_ROLE') {
+                setAuthorized(true);
+            }
         } else {
             localStorage.removeItem('user');
             window.location.href = '/unauthorized';
