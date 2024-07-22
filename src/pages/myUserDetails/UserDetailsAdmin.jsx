@@ -4,10 +4,28 @@ import { CardHeader } from '../../components/CardHeader'
 import { useUserFromLocalStorage } from '../../shared/hooks'
 import { useGetUserById } from '../../shared/hooks';
 import { FcCheckmark } from "react-icons/fc";
+import { useEffect, useState } from 'react';
 
-export const UserDetails = () => {
+export const UserDetailsAdmin = () => {
     const userLogged = useUserFromLocalStorage();
     const { user, loading, error } = useGetUserById(userLogged?.id);
+    const [authorized, setAuthorized] = useState(false);
+
+    useEffect(() => {
+        const token = localStorage.getItem('user');
+        if (token) {
+            const user = JSON.parse(token);
+            console.log(user);
+            if (user.role === 'ADMIN_ROLE') {
+                setAuthorized(true);
+            } else {
+                window.location.href = '/unauthorized';
+            }
+        } else {
+            localStorage.removeItem('user');
+            window.location.href = '/unauthorized';
+        }
+    }, []);
 
     if (loading) {
         return <div>Cargando...</div>;
@@ -17,6 +35,10 @@ export const UserDetails = () => {
         return <div>Error al obtener el usuario</div>;
     }
 
+    if (!authorized) {
+        return <div>Cargando...</div>;
+    } 
+    
     return (
         <Card className="bg-[white] w-full max-w-2xl">
             <CardHeader className="bg-primary text-primary-foreground p-8 flex items-center">
@@ -42,19 +64,6 @@ export const UserDetails = () => {
                     </div>
                 </div>
             </CardContentForm>
-            <div>
-                {user.usuario.role === 'PACIENTE_ROLE' && (
-                    <CardHeader className="bg-primary text-primary-foreground p-8 flex items-center">
-                        <div className="flex items-center gap-8">
-                            <div className="grid gap-4">
-                                <div className="text-2xl font-bold">Preceptor</div>
-                                <div className="text-2xl font-bold">{user.usuario.preceptor?.nombre}</div>
-                                <div className="text-lg text-muted-foreground">{user.usuario.preceptor?.correo}</div>
-                            </div>
-                        </div>
-                    </CardHeader>
-                )}
-            </div>
         </Card>
     );
 }

@@ -8,15 +8,21 @@ export const DiariesOfMyPatients = () => {
   const { diarios, loading, error } = useDiariosByPreceptor();
   const [authorized, setAuthorized] = useState(false);
 
-  useEffect(() => {
-    const token = localStorage.getItem('user');
-    if (token) {
-      setAuthorized(true);
-    } else {
-      localStorage.removeItem('user');
-      window.location.href = '/unauthorized';
-    }
-  }, []);
+    useEffect(() => {
+        const token = localStorage.getItem('user');
+        if (token) {
+            const user = JSON.parse(token);
+            console.log(user);
+            if (user.role === 'PRECEPTOR_ROLE') {
+                setAuthorized(true);
+            } else {
+                window.location.href = '/unauthorized';
+            }
+        } else {
+            localStorage.removeItem('user');
+            window.location.href = '/unauthorized';
+        }
+    }, []);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
   if (!authorized) {

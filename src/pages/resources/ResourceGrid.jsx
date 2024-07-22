@@ -9,7 +9,13 @@ export const ResourceGrid = () => {
     useEffect(() => {
         const token = localStorage.getItem('user');
         if (token) {
-            setAuthorized(true);
+            const user = JSON.parse(token);
+            console.log(user);
+            if (user.role === 'PACIENTE_ROLE') {
+                setAuthorized(true);
+            } else {
+                window.location.href = '/unauthorized';
+            }
         } else {
             localStorage.removeItem('user');
             window.location.href = '/unauthorized';

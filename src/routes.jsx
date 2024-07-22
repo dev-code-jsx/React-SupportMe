@@ -13,7 +13,9 @@ import { BlogPagePatient } from './pages/BlogPage.jsx/BlogPagePatient';
 import { Users } from './pages/listUser/Users';
 import { Notfound } from './components/Notfound';
 import { Unauthorized } from './components/Unauthorized';
-import { UserDetails } from './pages/myUserDetails/UserDetails';
+import { UserDetailsAdmin } from './pages/myUserDetails/UserDetailsAdmin';
+import { UserDetailsPreceptor } from './pages/myUserDetails/UserDetailsPreceptor';
+import { UserDetailsPaciente } from './pages/myUserDetails/UserDetailsPaciente';
 
 const routes = [
     { path: '/', element: <Auth /> },
@@ -29,7 +31,7 @@ const routes = [
             { path: 'myDiary', element: <MyDiary /> },
             { path: "resourcesGrid", element: <ResourceGrid/>},
             { path: 'resources/:id', element: <BlogPagePatient />},
-            { path: 'myUserDetails', element: <UserDetails />},
+            { path: 'myUserDetailsPaciente', element: <UserDetailsPaciente />},
         ],
     },
     {
@@ -43,7 +45,7 @@ const routes = [
             { path: 'resources/:id', element: <BlogPage />},
             { path: 'resourcesEdit/:id', element: <FormResourceAdminEdit/>},
             { path: 'users', element: <Users/>},
-            { path: 'myUserDetails', element: <UserDetails />},
+            { path: 'myUserDetailsAdmin', element: <UserDetailsAdmin />},
         ],
     },
     {
@@ -53,7 +55,7 @@ const routes = [
             { path: 'home', element: <Home /> },
             { index: true, element: <Home /> },
             { path: 'allDiarios', element: <DiariesOfMyPatients /> },
-            { path: 'myUserDetails', element: <UserDetails />},
+            { path: 'myUserDetailsPreceptor', element: <UserDetailsPreceptor />},
         ],
     },
     

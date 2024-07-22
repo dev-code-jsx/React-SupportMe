@@ -45,17 +45,17 @@ export const Sidebar = () => {
                 case 'PACIENTE_ROLE':
                     userLinks.push({ href: '/principal/myDiary', icon: FaBook, label: 'My Diary' })
                     userLinks.push({ href: "/principal/resourcesGrid", icon: VscCodeOss, label: "Resources" }),
-                        userLinks.push({ href: "/principal/myUserDetails", icon: MdManageAccounts, label: "My Details" })
+                        userLinks.push({ href: "/principal/myUserDetailsPaciente", icon: MdManageAccounts, label: "My Details" })
                     break;
                 case 'ADMIN_ROLE':
                     userLinks.push({ href: '/principal/admin/registerPreceptor', icon: FaRegistered, label: 'Register Preceptor' });
                     userLinks.push({ href: '/principal/admin/adminRecursos', icon: VscCodeOss, label: 'CRUD Recursos' })
                     userLinks.push({ href: '/principal/admin/users', icon: FaUser, label: 'Users' }),
-                        userLinks.push({ href: '/principal/admin/myUserDetails', icon: MdManageAccounts, label: 'My Details' })
+                        userLinks.push({ href: '/principal/admin/myUserDetailsAdmin', icon: MdManageAccounts, label: 'My Details' })
                     break;
                 case 'PRECEPTOR_ROLE':
                     userLinks.push({ href: '/principal/preceptor/allDiarios', icon: VscCodeOss, label: 'Diarios asignados' })
-                    userLinks.push({ href: "/principal/preceptor/myUserDetails", icon: MdManageAccounts, label: "My Details" })
+                    userLinks.push({ href: "/principal/preceptor/myUserDetailsPreceptor", icon: MdManageAccounts, label: "My Details" })
                     break;
                 default:
                     break;
