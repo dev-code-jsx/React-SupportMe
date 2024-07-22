@@ -44,15 +44,19 @@ export const UserDetails = () => {
                     </div>
                 </div>
             </CardContentForm>
-            <CardHeader className="bg-primary text-primary-foreground p-8 flex items-center">
-                <div className="flex items-center gap-8">
-                    <div className="grid gap-4">
-                        <div className="text-2xl font-bold">Preceptor</div>
-                        <div className="text-2xl font-bold">{user.usuario.preceptor?.nombre}</div>
-                        <div className="text-lg text-muted-foreground">{user.usuario.preceptor?.correo}</div>
-                    </div>
-                </div>
-            </CardHeader>
+            <div>
+                {user.usuario.role === 'PACIENTE_ROLE' && (
+                    <CardHeader className="bg-primary text-primary-foreground p-8 flex items-center">
+                        <div className="flex items-center gap-8">
+                            <div className="grid gap-4">
+                                <div className="text-2xl font-bold">Preceptor</div>
+                                <div className="text-2xl font-bold">{user.usuario.preceptor?.nombre}</div>
+                                <div className="text-lg text-muted-foreground">{user.usuario.preceptor?.correo}</div>
+                            </div>
+                        </div>
+                    </CardHeader>
+                )}
+            </div>
         </Card>
     );
 }

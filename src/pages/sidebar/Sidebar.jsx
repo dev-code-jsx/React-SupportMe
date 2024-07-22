@@ -39,7 +39,7 @@ export const Sidebar = () => {
                     userLinks.push({ href: '/principal/admin/registerPreceptor', icon: FaRegistered, label: 'Register Preceptor' });
                     userLinks.push({ href: '/principal/admin/adminRecursos', icon: VscCodeOss, label: 'CRUD Recursos'})
                     userLinks.push({ href: '/principal/admin/users', icon: FaUser, label: 'Users'}),
-                    userLinks.push({ href: '/principal/admin/myUserDet', icon: MdManageAccounts, label: 'My Details'})
+                    userLinks.push({ href: '/principal/admin/myUserDetails', icon: MdManageAccounts, label: 'My Details'})
                     break;
                 case 'PRECEPTOR_ROLE':
                     userLinks.push({ href: '/principal/preceptor/allDiarios', icon: VscCodeOss, label: 'Diarios asignados'})
