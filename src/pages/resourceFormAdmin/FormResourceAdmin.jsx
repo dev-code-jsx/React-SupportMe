@@ -25,21 +25,20 @@ export const FormResourceAdmin = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('user');
-        if (token) {
-            const user = JSON.parse(token);
-            console.log(user);
-            if (user.role === 'ADMIN_ROLE') {
-                setAuthorized(true);
-            } else {
-                localStorage.removeItem('user');
-                window.location.href = '/unauthorized';
-            }
-
+    if (token) {
+      const user = JSON.parse(token);
+      console.log(user);
+      if (user.role === 'ADMIN_ROLE') {
+        setAuthorized(true);
+      } else {
+        window.location.href = '/unauthorized';
+      }
     } else {
       localStorage.removeItem('user');
       window.location.href = '/unauthorized';
     }
   }, []);
+
   useEffect(() => {
     if (!isLoading) {
       setFormState({
@@ -55,7 +54,7 @@ export const FormResourceAdmin = () => {
       return (
         formState.imagen.value.trim() !== '',
         formState.titulo.value.trim() !== '',
-        formState.tipo.value.trim() !== '' ,
+        formState.tipo.value.trim() !== '',
         formState.contenido.value.trim() !== ''
       );
     };
@@ -102,20 +101,20 @@ export const FormResourceAdmin = () => {
         }));
       });
       toast.error('Register failed');
-    } else if(!isFormValid){
+    } else if (!isFormValid) {
       toast.error('Tiene que llenar todos los campos!');
-    }else{
+    } else {
       toast.success('Register succesful');
-      setTimeout(()=>{
+      setTimeout(() => {
         window.location.reload();
-    }, 2000)
+      }, 2000)
     }
   };
 
   if (!authorized) {
     return <div>Loading...</div>;
   }
-  
+
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="w-full px-4 md:max-w-2xl md:mx-auto">
@@ -174,10 +173,10 @@ export const FormResourceAdmin = () => {
               className="mt-4 md:mt-0"
               onClick={() =>
                 setFormState({
-                  imagen: { value: ''},
-                  titulo: { value: ''},
-                  tipo: { value: ''},
-                  contenido: { value: ''}
+                  imagen: { value: '' },
+                  titulo: { value: '' },
+                  tipo: { value: '' },
+                  contenido: { value: '' }
                 })
               }
             >

@@ -13,7 +13,6 @@ export const AdminRecursosPage = () => {
             if (user.role === 'ADMIN_ROLE') {
                 setAuthorized(true);
             } else {
-                localStorage.removeItem('user');
                 window.location.href = '/unauthorized';
             }
         } else {
