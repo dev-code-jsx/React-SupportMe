@@ -220,4 +220,3 @@ export const deleteDiario = async (id) => {
         return { error: true, e }
     }
 }
-

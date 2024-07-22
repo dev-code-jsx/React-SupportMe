@@ -1,8 +1,8 @@
-import { FaHome, FaRegistered } from 'react-icons/fa';
-import { VscCodeOss } from "react-icons/vsc";
+import { FaAirFreshener, FaBook, FaHome, FaMagento, FaRegistered } from 'react-icons/fa';
 import { SidebarLayout } from '../../components/SheetsComponents';
 import React, { useEffect, useState } from 'react';
-
+import { Fa42Group, Fa5, FaAccusoft, FaSmoking } from 'react-icons/fa6';
+import { VscCodeOss } from "react-icons/vsc";
 export const Sidebar = () => {
     const [links, setLinks] = useState([]);
     const [avatar, setAvatar] = useState({
@@ -24,10 +24,12 @@ export const Sidebar = () => {
             });
 
             // Configurar enlaces según el rol del usuario
-            let userLinks = [{ href: '/principal/home', icon: FaHome, label: 'Home' },];
+            let userLinks = [{ href: '/principal/home', icon: FaHome, label: 'Home' },
+            ]
 
             switch (user.role) {
                 case 'PACIENTE_ROLE':
+                    userLinks.push({ href: '/principal/myDiary', icon: FaBook, label: 'My Diary'})
                     break;
                 case 'ADMIN_ROLE':
                     userLinks.push({ href: '/principal/admin/registerPreceptor', icon: FaRegistered, label: 'Register Preceptor' });
@@ -35,6 +37,7 @@ export const Sidebar = () => {
                     break;
                 case 'PRECEPTOR_ROLE':
                     userLinks.push({ href: '/principal/preceptor/allDiarios', icon: VscCodeOss, label: 'Diarios asignados'})
+                    
                     break;
                 default:
                     break;

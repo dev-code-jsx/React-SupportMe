@@ -1,8 +1,7 @@
 import React from "react";
 import { useDiariosByPreceptor } from "../../shared/hooks/useDiariosByPreceptor";
-import { CardDiary } from "../../components/CardDiary";
 import { CardContentDiary } from "../../components/CardDiaryContent";
-
+import { CardDiaryPreceptor } from "../../components/CardDiaryPreceptor";
 export const DiariesOfMyPatients = () => {
   const { diarios, loading, error } = useDiariosByPreceptor();
 
@@ -14,13 +13,13 @@ export const DiariesOfMyPatients = () => {
       <h1 className="text-3xl font-bold text-center mb-8">Patient Journals</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {diarios.map((entry, index) => (
-          <CardDiary key={index}>
+          <CardDiaryPreceptor key={index}>
             <CardContentDiary
               nombre={entry.usuario?.nombre} // Asumiendo que el nombre del usuario está en la propiedad nombre
               fecha={entry.fecha}
               contenido={entry.entradas.map(entrada => entrada.contenido).join(", ")} // Unir contenido de entradas
             />
-          </CardDiary>
+          </CardDiaryPreceptor>
         ))}
       </div>
     </div>

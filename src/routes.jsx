@@ -7,6 +7,8 @@ import { DiariesOfMyPatients } from './pages/diariesOfMyPatients/DiariesOfMyPati
 import { AdminRecursosPage } from './pages/AdminRecursos/AdminRecursosPage';
 import { FormResourceAdminEdit } from './pages/resourcesAdmin/ResourceEdit';
 import { BlogPage } from './pages/BlogPage.jsx/BlogPage';
+import {MyDiary} from "./pages/myDiary/MyDiary"
+
 const routes = [
     { path: '/', element: <Auth /> },
     { path: '/register', element: <RegisterPaciente />},
@@ -15,7 +17,9 @@ const routes = [
         element: <Sidebar />,
         children: [
             { path: 'home', element: <Home /> },
-            { index: true, element: <Home /> }
+            { index: true, element: <Home /> },
+            { path: 'myDiary', element: <MyDiary /> },
+            { index: true, element: <MyDiary /> }
         ],
     },
     {
