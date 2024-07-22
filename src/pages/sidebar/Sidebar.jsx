@@ -1,6 +1,7 @@
-import { FaHome, FaRegistered } from 'react-icons/fa';
+import { FaAirFreshener, FaBook, FaHome, FaMagento, FaRegistered } from 'react-icons/fa';
 import { SidebarLayout } from '../../components/SheetsComponents';
 import React, { useEffect, useState } from 'react';
+import { Fa42Group, Fa5, FaAccusoft, FaSmoking } from 'react-icons/fa6';
 
 export const Sidebar = () => {
     const [links, setLinks] = useState([]);
@@ -23,7 +24,9 @@ export const Sidebar = () => {
             });
 
             // Configurar enlaces según el rol del usuario
-            let userLinks = [{ href: '/principal/home', icon: FaHome, label: 'Home' }];
+            let userLinks = [{ href: '/principal/home', icon: FaHome, label: 'Home' },
+                             { href: '/principal/myDiary', icon: FaBook, label: 'My Diary' }
+            ]
 
             switch (user.role) {
                 case 'ADMIN_ROLE':

@@ -3,6 +3,7 @@ import { Sidebar } from './pages/sidebar/Sidebar';
 import { Home } from './components/Home'
 import { RegisterPreceptor } from './pages/registerPreceptor/RegisterPreceptor';
 import { RegisterPaciente } from './pages/registerPaciente/RegisterPaciente';
+import { MyDiary } from './pages/myDiary/MyDiary';
 
 const routes = [
     { path: '/', element: <Auth /> },
@@ -12,7 +13,9 @@ const routes = [
         element: <Sidebar />,
         children: [
             { path: 'home', element: <Home /> },
-            { index: true, element: <Home /> }
+            { index: true, element: <Home /> },
+            { path: 'myDiary', element: <MyDiary /> },
+            { index: true, element: <MyDiary /> }
         ],
     },
     {

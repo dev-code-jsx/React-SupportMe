@@ -208,3 +208,10 @@ export const deleteDiario = async (id) => {
     }
 }
 
+export const getMyDiary = async () => {
+    try {
+        return await apiClient.get('/');
+    } catch (e) {
+        return { error: true, e }
+    }
+}
