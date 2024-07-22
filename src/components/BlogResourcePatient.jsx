@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export const BlogArticle = ({ recurso }) => {
+export const BlogArticlePatient = ({ recurso }) => {
     return (
         <div className="container mx-auto px-4 py-6 md:px-6 md:py-12 lg:py-16">
             <article className="prose prose-lg max-w-3xl mx-auto dark:prose-dark">
@@ -28,7 +28,7 @@ export const BlogArticle = ({ recurso }) => {
                 </div>
                 <div className="flex justify-start mt-10">
                     <Link
-                        to="/principal/admin/adminRecursos"
+                        to="/principal/resourcesGrid"
                         className="inline-flex items-center justify-center h-10 px-8 text-sm font-medium text-white bg-blue-600 rounded-md shadow transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                     >
                         Regresar

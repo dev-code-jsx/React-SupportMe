@@ -8,7 +8,8 @@ import { AdminRecursosPage } from './pages/AdminRecursos/AdminRecursosPage';
 import { FormResourceAdminEdit } from './pages/resourcesAdmin/ResourceEdit';
 import { BlogPage } from './pages/BlogPage.jsx/BlogPage';
 import {MyDiary} from "./pages/myDiary/MyDiary"
-
+import { ResourceGrid } from './pages/resources/ResourceGrid';
+import { BlogPagePatient } from './pages/BlogPage.jsx/BlogPagePatient';
 const routes = [
     { path: '/', element: <Auth /> },
     { path: '/register', element: <RegisterPaciente />},
@@ -19,7 +20,10 @@ const routes = [
             { path: 'home', element: <Home /> },
             { index: true, element: <Home /> },
             { path: 'myDiary', element: <MyDiary /> },
-            { index: true, element: <MyDiary /> }
+            { index: true, element: <MyDiary /> },
+            { path: "resourcesGrid", element: <ResourceGrid/>},
+            { index: true, element: <ResourceGrid/> },
+            { path: 'resources/:id', element: <BlogPagePatient />},
         ],
     },
     {

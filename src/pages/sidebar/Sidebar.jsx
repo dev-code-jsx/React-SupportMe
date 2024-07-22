@@ -30,6 +30,7 @@ export const Sidebar = () => {
             switch (user.role) {
                 case 'PACIENTE_ROLE':
                     userLinks.push({ href: '/principal/myDiary', icon: FaBook, label: 'My Diary'})
+                    userLinks.push({ href: "/principal/resourcesGrid", icon: VscCodeOss, label: "Resources"})
                     break;
                 case 'ADMIN_ROLE':
                     userLinks.push({ href: '/principal/admin/registerPreceptor', icon: FaRegistered, label: 'Register Preceptor' });

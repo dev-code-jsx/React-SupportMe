@@ -1,4 +1,4 @@
-import { ResourceCard } from "../../components/ResourceCard";
+import { ResourceCardPatient } from "../../components/ResourceCardPatient";
 import { getRecursosA } from "../../shared/hooks/getRecursosA";
 export const ResourceGrid = () => {
     //cargar el hook que traiga los recursos y pasar esa informacion al componente
@@ -13,7 +13,7 @@ export const ResourceGrid = () => {
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-6xl mx-auto">
             {recursos.map((recurso, index) => (
-                <ResourceCard
+                <ResourceCardPatient
                     key={index}
                     titulo={recurso.titulo}
                     imagenRecurso={recurso.imagen}
